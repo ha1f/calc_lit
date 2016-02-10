@@ -14,7 +14,7 @@ struct Calc {
     var ope: CalcOperator? = nil
     
     mutating func clear() {
-        inputNums = [0.0, 0.0]
+        inputNums = [0.0, nil]
         result = nil
         ope = nil
     }
