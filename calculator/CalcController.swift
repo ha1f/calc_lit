@@ -66,6 +66,7 @@ class CalcController {
         guard phase < CalcController.PHASE_RESULT else {
             return
         }
+        // 小数入力モードへ
         if inputPlace == 1.0 {
             inputPlace = 0.1
         }
@@ -98,7 +99,11 @@ class CalcController {
         }
         if inputPlace == 1.0 {
             // 整数入力モード
-            calc.inputNums[phase] = calc.inputNums[phase]! * 10 + Double(number)
+            if let currentNum = calc.inputNums[phase] {
+                calc.inputNums[phase] = currentNum * 10 + Double(number)
+            } else {
+                calc.inputNums[phase] = Double(number)
+            }
         } else {
             // 小数入力モード
             calc.inputNums[phase] = calc.inputNums[phase]! + Double(number) * inputPlace
@@ -109,7 +114,7 @@ class CalcController {
     func continueCalc() {
         // opは維持
         calc.inputNums[0] = calc.result
-        calc.inputNums[1] = 0.0
+        calc.inputNums[1] = nil
         calc.result = nil
         inputPlace = 1.0
     }

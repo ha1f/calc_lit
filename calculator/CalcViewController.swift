@@ -12,22 +12,22 @@ class CalcViewController: UIViewController {
     
     @IBOutlet var panel: UILabel!
     
-    var calc = CalcController()
+    var controller = CalcController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        calc.clear()
+        controller.clear()
         updateView()
     }
     
     func updateView() {
-        panel.text = calc.composePanelString()
+        panel.text = controller.composePanelString()
     }
     
     @IBAction func onPressedNumber(button: UIButton!) {
         
         let number = button.tag - 10
-       calc.appendNumber(number)
+        controller.appendNumber(number)
         
         updateView()
     }
@@ -39,28 +39,28 @@ class CalcViewController: UIViewController {
         }
         
         let ope = Calc.CalcOperator(rawValue: operatorIndex)!
-        calc.pressedOperator(ope)
+        controller.pressedOperator(ope)
         
         updateView()
     }
     
     @IBAction func onPressedDot() {
-        calc.pressedDot()
+        controller.pressedDot()
         updateView()
     }
     
     @IBAction func onPressedClear() {
-        calc.clear()
+        controller.clear()
         updateView()
     }
     
     @IBAction func onPressedPercent() {
-        calc.pressedPercent()
+        controller.pressedPercent()
         updateView()
     }
     
     @IBAction func onPressedEnter(button: UIButton!) {
-        calc.pressedEnter()
+        controller.pressedEnter()
         updateView()
     }
     
