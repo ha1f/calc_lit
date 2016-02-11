@@ -9,23 +9,6 @@
 import Foundation
 
 struct Calc {
-    var inputNums: [Double?] = [0.0, nil]
-    var result: Double? = nil
-    var ope: CalcOperator? = nil
-    
-    mutating func clear() {
-        inputNums = [0.0, nil]
-        result = nil
-        ope = nil
-    }
-    
-    mutating func calculate() {
-        guard let ope = ope, num0 = inputNums[0], num1 = inputNums[1] else {
-            return
-        }
-        result = ope.process(num0, num1: num1)
-    }
-    
     enum CalcOperator: Int {
         case Plus = 0
         case Minus = 1
@@ -57,5 +40,22 @@ struct Calc {
                 return num0 / num1
             }
         }
+    }
+    
+    var inputNums: [Double?] = [0.0, nil]
+    var result: Double? = nil
+    var ope: CalcOperator? = nil
+    
+    mutating func clear() {
+        inputNums = [0.0, nil]
+        result = nil
+        ope = nil
+    }
+    
+    mutating func calculate() {
+        guard let ope = ope, num0 = inputNums[0], num1 = inputNums[1] else {
+            return
+        }
+        result = ope.process(num0, num1: num1)
     }
 }
