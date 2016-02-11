@@ -12,7 +12,7 @@ class CalcViewController: UIViewController {
     
     @IBOutlet var panel: UILabel!
     
-    var controller = CalcController()
+    let controller = ModelManager.manager.calcController
 
     override func viewDidLoad() {
         super.viewDidLoad()
