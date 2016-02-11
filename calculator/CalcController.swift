@@ -93,6 +93,13 @@ class CalcController {
         calc.inputNums[phase] = calc.inputNums[phase]! / 100
     }
     
+    func pressedPlusMinus() {
+        guard phase < CalcController.PHASE_RESULT else {
+            return
+        }
+        calc.inputNums[phase] = -calc.inputNums[phase]!
+    }
+    
     func appendNumber(number: Int) {
         guard phase < CalcController.PHASE_RESULT else {
             return

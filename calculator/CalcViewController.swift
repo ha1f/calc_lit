@@ -64,6 +64,11 @@ class CalcViewController: UIViewController {
         updateView()
     }
     
+    @IBAction func onPressedPlusMinus(button: UIButton!) {
+        controller.pressedPlusMinus()
+        updateView()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

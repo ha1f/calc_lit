@@ -198,6 +198,9 @@
                                 <state key="normal" title="+/-">
                                     <color key="titleColor" red="0.33937336387434558" green="0.26445377348426641" blue="0.31491031884924747" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="onPressedPlusMinus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cxc-uR-V9V"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pw-JE-k3p">
                                 <rect key="frame" x="33" y="230" width="71" height="71"/>
