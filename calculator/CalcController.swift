@@ -38,7 +38,7 @@ class CalcController {
         guard let num1 = calc.inputNums[1] else {
             return string
         }
-        string += " " + (num1 == 0 ?  "" : CalcController.doubleToString(num1))
+        string += " " + CalcController.doubleToString(num1)
         
         guard let result = calc.result else {
             return string
