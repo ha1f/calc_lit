@@ -10,7 +10,7 @@ import UIKit
 
 class CalcViewController: UIViewController {
     
-    @IBOutlet var panel: UILabel!
+    @IBOutlet var panelLabel: UILabel!
     
     let controller = ModelManager.manager.calcController
 
@@ -21,7 +21,7 @@ class CalcViewController: UIViewController {
     }
     
     func updateView() {
-        panel.text = controller.composePanelString()
+        panelLabel.text = controller.composePanelString()
     }
     
     @IBAction func onPressedNumber(button: UIButton!) {

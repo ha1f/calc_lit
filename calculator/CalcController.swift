@@ -73,14 +73,21 @@ class CalcController {
     }
     
     func pressedOperator(ope: Calc.CalcOperator) {
+        guard let _ = calc.inputNums[0] else {
+            return
+        }
+        
         calc.ope = ope
         
-        if phase == CalcController.PHASE_NUM0 {
+        if calc.inputNums[1] == nil {
             // ふたつ目の数字の入力へ
             inputPlace = 1.0
             phase = CalcController.PHASE_NUM1
-        } else if phase == CalcController.PHASE_RESULT {
+        } else {
             // つづけて計算モードへ
+            if calc.result == nil {
+                calc.calculate()
+            }
             continueCalc()
             phase = CalcController.PHASE_NUM1
         }
@@ -115,6 +122,7 @@ class CalcController {
             // 小数入力モード
             calc.inputNums[phase] = calc.inputNums[phase]! + Double(number) * inputPlace
             inputPlace /= 10
+            
         }
     }
     

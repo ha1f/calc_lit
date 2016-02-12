@@ -15,31 +15,25 @@ struct Calc {
         case Multiply = 2
         case Devide = 3
         
+        static let OPERATOR_STRING = ["+", "-", "×", "÷"]
+        
         func toString() -> String {
+            return Calc.CalcOperator.OPERATOR_STRING[self.rawValue]
+        }
+        
+        var operate: (Double, Double) -> Double {
             switch self {
             case .Plus:
-                return "+"
+                return {$0 + $1}
             case .Minus:
-                return "-"
+                return {$0 - $1}
             case .Multiply:
-                return "×"
+                return {$0 * $1}
             case .Devide:
-                return "÷"
+                return {$0 / $1}
             }
         }
         
-        func process(num0: Double, num1: Double) -> Double {
-            switch self {
-            case .Plus:
-                return num0 + num1
-            case .Minus:
-                return num0 - num1
-            case .Multiply:
-                return num0 * num1
-            case .Devide:
-                return num0 / num1
-            }
-        }
     }
     
     var inputNums: [Double?] = [0.0, nil]
@@ -56,6 +50,6 @@ struct Calc {
         guard let ope = ope, num0 = inputNums[0], num1 = inputNums[1] else {
             return
         }
-        result = ope.process(num0, num1: num1)
+        result = ope.operate(num0, num1)
     }
 }
