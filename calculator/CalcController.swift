@@ -12,22 +12,28 @@ class CalcController {
     
     var phase: Int = 0
     
-    static let PHASE_RESULT = 2
     static let PHASE_NUM0 = 0
     static let PHASE_NUM1 = 1
+    static let PHASE_RESULT = 2
     
     var calc = Calc()
     
-    class func doubleToString(number: Double) -> String {
+    func doubleToString(number: Double) -> String {
+        var stringData = ""
         if number.isInteger() {
-            return String(format: "%g", number)
+            stringData = String(format: "%g", number)
         } else {
-            return String(number)
+            stringData = String(number)
         }
+        
+        if inputPlace == 0.1 {
+            stringData += "."
+        }
+        return stringData
     }
     
     func composePanelString() -> String {
-        var string = CalcController.doubleToString(calc.inputNums[0]!)
+        var string = doubleToString(calc.inputNums[0]!)
         
         guard let ope = calc.ope else {
             return string
@@ -38,12 +44,12 @@ class CalcController {
         guard let num1 = calc.inputNums[1] else {
             return string
         }
-        string += " " + CalcController.doubleToString(num1)
+        string += " " + doubleToString(num1)
         
         guard let result = calc.result else {
             return string
         }
-        string += " = " + CalcController.doubleToString(result)
+        string += " = " + doubleToString(result)
         return string
     }
     
@@ -107,7 +113,7 @@ class CalcController {
         calc.inputNums[phase] = -calc.inputNums[phase]!
     }
     
-    func appendNumber(number: Int) {
+    func pressedNumber(number: Int) {
         guard phase < CalcController.PHASE_RESULT else {
             return
         }

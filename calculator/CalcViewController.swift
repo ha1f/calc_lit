@@ -27,7 +27,7 @@ class CalcViewController: UIViewController {
     @IBAction func onPressedNumber(button: UIButton!) {
         
         let number = button.tag - 10
-        controller.appendNumber(number)
+        controller.pressedNumber(number)
         
         updateView()
     }
